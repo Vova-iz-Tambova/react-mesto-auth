@@ -1,0 +1,6 @@
+.page__content {
+  background-color: black;
+  color: white;
+  display: grid;
+  font-family: 'Inter', 'Arial', sans-serif;
+}

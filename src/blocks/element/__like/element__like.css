@@ -1,0 +1,19 @@
+.element__like {
+  width: 22px;
+  height: 19px;
+  /* align-self: center; */
+  /* justify-self: center; */
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+  /* margin-right: 9px; */
+  margin: 0 0 5px 0;
+}
+
+.element__like:hover {
+  opacity: .5;
+}

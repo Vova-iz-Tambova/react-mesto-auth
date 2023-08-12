@@ -1,0 +1,10 @@
+.element {
+  width: 282px;
+  height: 361px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  display: grid;
+  grid-template: 282px 79px / 230px 52px;
+  position: relative;
+}

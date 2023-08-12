@@ -1,0 +1,10 @@
+.element__link {
+  height: 282px;
+  width: 282px;
+  background-size: cover;
+  background-position: center;
+  /* object-fit: cover;
+  object-position: center; */
+  border-radius: 10px 10px 0 0;
+  grid-column: span 2;
+}

@@ -1,0 +1,10 @@
+.element__likes {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+}
