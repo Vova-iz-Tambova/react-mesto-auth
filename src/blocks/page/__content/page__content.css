@@ -2,6 +2,8 @@
   min-height: 100vh;
   background-color: black;
   color: white;
-  display: grid;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
   font-family: 'Inter', 'Arial', sans-serif;
 }

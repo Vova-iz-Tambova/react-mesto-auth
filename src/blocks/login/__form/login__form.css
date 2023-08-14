@@ -1,0 +1,6 @@
+.login__form {
+  height: 350px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}

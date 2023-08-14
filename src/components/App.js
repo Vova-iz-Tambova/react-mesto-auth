@@ -10,6 +10,7 @@ import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 import ConfirmationPopup from './ConfirmationPopup'
 import { Route, Routes, Navigate } from 'react-router-dom'
+import Login from './Login'
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
@@ -21,6 +22,8 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState({})
   const [cards, setCards] = React.useState([])
   const [currentUser, setCurrentUser] = React.useState({ name: '', about: '' })
+
+  const [loggedIn, setLoggedIn] = React.useState(true)
 
   function handleEditAvatarClick() { setIsEditAvatarPopupOpen(true) }
   function handleEditProfileClick() { setIsEditProfilePopupOpen(true) }
@@ -97,7 +100,12 @@ function App() {
       <div className="page__content">
         <Routes>
           <Route path='/sign-up' element={<Header link={'/sign-in'} text={'Войти'} />} />
-          <Route path='/sign-in' element={<Header link={'/sign-up'} text={'Регистрация'} />} />
+          <Route path='/sign-in' element={
+            <>
+              <Header link={'/sign-up'} text={'Регистрация'} />
+              <Login />
+            </>
+          } />
           <Route path='*' element={<Navigate to='/sign-in' />} />
           <Route path='/' element={
             <>
