@@ -1,13 +1,14 @@
-.login__submit {
+.auth__submit {
   height: 50px;
   border-radius: 2px;
-  margin-top: 216px;
+  border: none;
+  margin-top: 193px;
   font-weight: 400;
   font-size: 18px;
   cursor: pointer;
   transition: opacity .3s ease-in-out;
 }
 
-.login__submit:hover {
+.auth__submit:hover {
   opacity: .85;
 }

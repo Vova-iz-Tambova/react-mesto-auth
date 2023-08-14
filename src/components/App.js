@@ -11,6 +11,7 @@ import AddPlacePopup from './AddPlacePopup'
 import ConfirmationPopup from './ConfirmationPopup'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Login from './Login'
+import Register from './Register'
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
@@ -99,7 +100,12 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
         <Routes>
-          <Route path='/sign-up' element={<Header link={'/sign-in'} text={'Войти'} />} />
+          <Route path='/sign-up' element={
+            <>
+              <Header link={'/sign-in'} text={'Войти'} />
+              <Register />
+            </>
+          } />
           <Route path='/sign-in' element={
             <>
               <Header link={'/sign-up'} text={'Регистрация'} />

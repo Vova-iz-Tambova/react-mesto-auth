@@ -1,5 +1,5 @@
-.login__input {
-  height: 25px;
+.auth__input {
+  height: 32px;
   border: none;
   border-bottom: 2px solid #ccc;
   font-weight: 400;

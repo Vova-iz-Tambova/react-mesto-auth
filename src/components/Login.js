@@ -12,24 +12,24 @@ function Login(props) {
   }
 
   return (
-    <div className="login">
-      <h2 className="login__title">Вход</h2>
-      <form className="login__form" onSubmit={handleSubmit}>
+    <div className="auth">
+      <h2 className="auth__title">Вход</h2>
+      <form className="auth__form" onSubmit={handleSubmit}>
         <input required
-          className="login__input"
+          className="auth__input"
           type="email"
           value={email}
           placeholder="Email"
           onChange={handleEmail}
         />
         <input required
-          className="login__input"
+          className="auth__input"
           type="password"
           value={password}
           placeholder="Пароль"
           onChange={handlePassword}
         />
-        <button className="login__submit" type="submit">Войти</button>
+        <button className="auth__submit" type="submit">Войти</button>
       </form>
     </div>
   )

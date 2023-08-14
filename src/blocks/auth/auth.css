@@ -1,0 +1,10 @@
+.auth {
+  min-width: 358px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: normal;
+}

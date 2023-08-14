@@ -1,6 +1,7 @@
 .link-effect {
   color: white;
   cursor: pointer;
+  text-decoration: none;
   transition: opacity .3s ease-in-out;
 }
 
