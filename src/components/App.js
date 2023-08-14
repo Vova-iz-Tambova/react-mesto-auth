@@ -12,6 +12,7 @@ import ConfirmationPopup from './ConfirmationPopup'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
+import ProtectedRoute from './ProtectedRoute'
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
@@ -112,50 +113,51 @@ function App() {
               <Login />
             </>
           } />
-          <Route path='*' element={<Navigate to='/sign-in' />} />
+          <Route path='*' element={<Navigate to={loggedIn ? '/' : '/sign-in'} />} />
           <Route path='/' element={
-            <>
-              <Header email={'email@email.com'} link={'/sign-in'} text={'Выйти'} />
-              <Main
-                onEditAvatar={handleEditAvatarClick}
-                onEditProfile={handleEditProfileClick}
-                onAddPlace={handleAddPlaceClick}
-                onCardClick={handleCardClick}
-                cards={cards}
-                onCardLike={handleCardLike}
-                onCardDelete={handleConfirmationPopupClick}
-              />
-              <Footer />
-              <EditProfilePopup
-                isOpen={isEditProfilePopupOpen}
-                onClose={closeAllPopups}
-                onUpdateUser={handleUpdateUser}
-              />
-              <EditAvatarPopup
-                isOpen={isEditAvatarPopupOpen}
-                onClose={closeAllPopups}
-                onUpdateAvatar={handleUpdateAvatar}
-              />
-              <AddPlacePopup
-                isOpen={isAddPlacePopupOpen}
-                onClose={closeAllPopups}
-                onAddPlace={handleAddPlace}
-              />
-              <ImagePopup
-                name="image"
-                card={selectedCard}
-                isOpen={isImagePopupOpen}
-                onClose={closeAllPopups}
-              />
-              <ConfirmationPopup
-                name="confirm-delete"
-                card={selectedCard}
-                isOpen={isConfirmationPopupOpen}
-                onClose={closeAllPopups}
-                onCardDelete={handleCardDelete} />
-            </>
-          }
-          />
+            <ProtectedRoute loggedIn={loggedIn}>
+              <>
+                <Header email={'email@email.com'} link={'/sign-in'} text={'Выйти'} />
+                <Main
+                  onEditAvatar={handleEditAvatarClick}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onCardClick={handleCardClick}
+                  cards={cards}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleConfirmationPopupClick}
+                />
+                <Footer />
+                <EditProfilePopup
+                  isOpen={isEditProfilePopupOpen}
+                  onClose={closeAllPopups}
+                  onUpdateUser={handleUpdateUser}
+                />
+                <EditAvatarPopup
+                  isOpen={isEditAvatarPopupOpen}
+                  onClose={closeAllPopups}
+                  onUpdateAvatar={handleUpdateAvatar}
+                />
+                <AddPlacePopup
+                  isOpen={isAddPlacePopupOpen}
+                  onClose={closeAllPopups}
+                  onAddPlace={handleAddPlace}
+                />
+                <ImagePopup
+                  name="image"
+                  card={selectedCard}
+                  isOpen={isImagePopupOpen}
+                  onClose={closeAllPopups}
+                />
+                <ConfirmationPopup
+                  name="confirm-delete"
+                  card={selectedCard}
+                  isOpen={isConfirmationPopupOpen}
+                  onClose={closeAllPopups}
+                  onCardDelete={handleCardDelete} />
+              </>
+            </ProtectedRoute>
+          } />
         </Routes>
       </div>
     </CurrentUserContext.Provider>
