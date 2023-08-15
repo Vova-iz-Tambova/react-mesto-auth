@@ -55,3 +55,5 @@
 @import url(./blocks/popup/__submit/_disabled/popup__submit_disabled.css);
 @import url(./blocks/popup/fullscreen-photo/popup__fullscreen-photo.css);
 @import url(./blocks/popup/fullscreen-title/popup__fullscreen-title.css);
+@import url(./blocks/popup/__icon/popup__icon.css);
+@import url(./blocks/popup/__message/popup__message.css);
