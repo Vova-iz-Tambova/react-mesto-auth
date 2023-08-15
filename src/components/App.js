@@ -25,7 +25,8 @@ function App() {
   const [cards, setCards] = React.useState([])
   const [currentUser, setCurrentUser] = React.useState({ name: '', about: '' })
 
-  const [loggedIn, setLoggedIn] = React.useState(true)
+  const [loggedIn, setLoggedIn] = React.useState(false)
+  const [email, setEmail] = React.useState('')
 
   function handleEditAvatarClick() { setIsEditAvatarPopupOpen(true) }
   function handleEditProfileClick() { setIsEditProfilePopupOpen(true) }
@@ -110,14 +111,14 @@ function App() {
           <Route path='/sign-in' element={
             <>
               <Header link={'/sign-up'} text={'Регистрация'} />
-              <Login />
+              <Login setLoggedIn={setLoggedIn} setEmail={setEmail}/>
             </>
           } />
           <Route path='*' element={<Navigate to={loggedIn ? '/' : '/sign-in'} />} />
           <Route path='/' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <>
-                <Header email={'email@email.com'} link={'/sign-in'} text={'Выйти'} />
+                <Header email={email} link={'/sign-in'} text={'Выйти'} />
                 <Main
                   onEditAvatar={handleEditAvatarClick}
                   onEditProfile={handleEditProfileClick}

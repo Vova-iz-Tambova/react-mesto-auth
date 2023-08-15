@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-// import { register } from '../utils/auth'
-import * as auth from '../utils/auth.js'
+import { Link } from 'react-router-dom'
+import { register } from '../utils/auth'
 import InfoTooltip from './InfoTooltip'
 
 function Register() {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
+  const [email, setEmail] = React.useState('email@yandex.ru')
+  const [password, setPassword] = React.useState('somepassword')
 
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
@@ -15,18 +14,11 @@ function Register() {
     setIsInfoTooltipPopupOpen(false)
   }
 
-  // function handleInfoTooltip() {
-  //   setIsInfoTooltipPopupOpen(true)
-  //   navigate('/sign-in')
-  // }
-
-  const navigate = useNavigate()
-
   function handleEmail(e) { setEmail(e.target.value) }
   function handlePassword(e) { setPassword(e.target.value) }
   function handleSubmit(e) {
     e.preventDefault()
-    auth.register(email, password)
+    register(email, password)
       .then(() => {
         setErrorMessage('')
       })

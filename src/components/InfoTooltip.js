@@ -1,5 +1,5 @@
-import icoOk from '../images/ok.svg'
-import icoError from '../images/error.svg'
+import iconOk from '../images/ok.svg'
+import iconError from '../images/error.svg'
 
 function InfoTooltip(props) {
   return (
@@ -7,7 +7,7 @@ function InfoTooltip(props) {
       <div className="popup__container">
         <img className="popup__icon" src={
           props.errorMessage
-            ? icoError : icoOk}></img>
+            ? iconError : iconOk}></img>
         <button className="popup__close  link-effect" type="button" onClick={props.onClose}></button>
         <h2 className="popup__message">
           {props.errorMessage

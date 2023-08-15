@@ -3,9 +3,8 @@ export const BASE_URL = 'https://auth.nomoreparties.co'
 function checkResponse(res) {
   if (res.ok) {
     return res.json()
-  } else {
-    return Promise.reject(`Ошибка: ${res.status}`)
   }
+  return Promise.reject(`Ошибка: ${res.status}`)
 }
 
 export const register = (email, password) => {
@@ -29,15 +28,8 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password })
   })
-    .then((response => response.json()))
-    .then((data) => {
-      if (data.user) {
-        localStorage.setItem('jwt', data.jwt);
-        return data;
-      }
-    })
     .then(checkResponse)
-};
+}
 
 export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
@@ -48,5 +40,5 @@ export const checkToken = (token) => {
       'Authorization': `Bearer ${token}`,
     }
   })
-  .then(checkResponse)
+    .then(checkResponse)
 }
