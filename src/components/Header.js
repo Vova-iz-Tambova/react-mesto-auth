@@ -5,6 +5,7 @@ function Header(props) {
 
   function onSignOut() {
     localStorage.removeItem("jwt")
+    props.setLoggedIn(false)
   }
 
   return (

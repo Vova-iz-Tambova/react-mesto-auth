@@ -9,7 +9,7 @@ import EditProfilePopup from './EditProfilepopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 import ConfirmationPopup from './ConfirmationPopup'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
 import ProtectedRoute from './ProtectedRoute'
@@ -27,6 +27,7 @@ function App() {
 
   const [loggedIn, setLoggedIn] = React.useState(false)
   const [email, setEmail] = React.useState('')
+  const navigate = useNavigate()
 
   function handleEditAvatarClick() { setIsEditAvatarPopupOpen(true) }
   function handleEditProfileClick() { setIsEditProfilePopupOpen(true) }
@@ -49,15 +50,18 @@ function App() {
   }
 
   React.useEffect(() => {
-    Promise.all([
-      api.getUserInfo(),
-      api.getInitialCards()
-    ])
-      .then(([info, cards]) => {
-        setCurrentUser(info)
-        setCards(cards)
-      }).catch(console.error)
-  }, [])
+    if (loggedIn) {
+      Promise.all([
+        api.getUserInfo(),
+        api.getInitialCards()
+      ])
+        .then(([info, cards]) => {
+          setCurrentUser(info)
+          setCards(cards)
+        }).catch(console.error)
+      navigate('/')
+    }
+  }, [loggedIn, navigate])
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id)
@@ -111,14 +115,14 @@ function App() {
           <Route path='/sign-in' element={
             <>
               <Header link={'/sign-up'} text={'Регистрация'} />
-              <Login setLoggedIn={setLoggedIn} setEmail={setEmail}/>
+              <Login setLoggedIn={setLoggedIn} setEmail={setEmail} />
             </>
           } />
           <Route path='*' element={<Navigate to={loggedIn ? '/' : '/sign-in'} />} />
           <Route path='/' element={
             <ProtectedRoute loggedIn={loggedIn}>
               <>
-                <Header email={email} link={'/sign-in'} text={'Выйти'} />
+                <Header setLoggedIn={setLoggedIn} email={email} link={'/sign-in'} text={'Выйти'} />
                 <Main
                   onEditAvatar={handleEditAvatarClick}
                   onEditProfile={handleEditProfileClick}

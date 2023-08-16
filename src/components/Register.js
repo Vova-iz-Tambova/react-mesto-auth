@@ -4,8 +4,8 @@ import { register } from '../utils/auth'
 import InfoTooltip from './InfoTooltip'
 
 function Register() {
-  const [email, setEmail] = React.useState('email@yandex.ru')
-  const [password, setPassword] = React.useState('somepassword')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
 
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')

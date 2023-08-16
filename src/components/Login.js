@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { authorize } from '../utils/auth'
+import { authorize, checkToken } from '../utils/auth'
 import InfoTooltip from './InfoTooltip'
 
 function Login(props) {
-  const [email, setEmail] = React.useState('email@yandex.ru')
-  const [password, setPassword] = React.useState('somepassword')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
 
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
@@ -20,8 +20,25 @@ function Login(props) {
     localStorage.setItem("jwt", res.token)
     props.setLoggedIn(true)
     props.setEmail(email)
-    navigate('/')
   }
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt")
+    if (jwt) {
+      checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            props.setLoggedIn(true)
+            props.setEmail(res.data.email)
+          }
+        })
+        .catch((err) => {
+          setIsInfoTooltipPopupOpen(true)
+          setErrorMessage(err)
+          console.log(err)
+        })
+    }
+  })
 
   function handleEmail(e) { setEmail(e.target.value) }
   function handlePassword(e) { setPassword(e.target.value) }
