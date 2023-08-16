@@ -9,7 +9,6 @@ function Header(props) {
   }
 
   return (
-    <>
       <header className="header">
         <img className="header__logo" src={logo} alt="логотип" />
         <div className="header__container">
@@ -22,7 +21,6 @@ function Header(props) {
           <div className="header__email">{props.email}</div>
         </div>
       </header>
-    </>
   )
 }
 

@@ -5,9 +5,11 @@ function InfoTooltip(props) {
   return (
     <div className={`popup  ${props.isOpen && "popup_is-opened"}`}>
       <div className="popup__container">
-        <img className="popup__icon" src={
-          props.errorMessage
-            ? iconError : iconOk}></img>
+        <img className="popup__icon"
+          src={props.errorMessage ? iconError : iconOk}
+          alt={props.errorMessage ? 'Иконка успешного запроса' : 'Иконка ошибки'}
+        >
+        </img>
         <button className="popup__close  link-effect" type="button" onClick={props.onClose}></button>
         <h2 className="popup__message">
           {props.errorMessage

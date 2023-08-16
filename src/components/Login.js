@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { authorize, checkToken } from '../utils/auth'
 import InfoTooltip from './InfoTooltip'
 
@@ -9,8 +8,6 @@ function Login(props) {
 
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false)
   const [errorMessage, setErrorMessage] = React.useState('')
-
-  const navigate = useNavigate()
 
   function closeInfoTooltipPopup() {
     setIsInfoTooltipPopupOpen(false)

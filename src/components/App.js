@@ -121,7 +121,6 @@ function App() {
           <Route path='*' element={<Navigate to={loggedIn ? '/' : '/sign-in'} />} />
           <Route path='/' element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <>
                 <Header setLoggedIn={setLoggedIn} email={email} link={'/sign-in'} text={'Выйти'} />
                 <Main
                   onEditAvatar={handleEditAvatarClick}
@@ -160,7 +159,6 @@ function App() {
                   isOpen={isConfirmationPopupOpen}
                   onClose={closeAllPopups}
                   onCardDelete={handleCardDelete} />
-              </>
             </ProtectedRoute>
           } />
         </Routes>
