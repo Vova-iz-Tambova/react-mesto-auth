@@ -8,3 +8,9 @@
   font-size: 14px;
   line-height: normal;
 }
+
+@media screen and (max-width: 968px) {
+  .auth {
+    min-width: 260px;
+  }
+}
