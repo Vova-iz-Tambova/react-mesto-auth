@@ -121,7 +121,7 @@ function App() {
           <Route path='*' element={<Navigate to={loggedIn ? '/' : '/sign-in'} />} />
           <Route path='/' element={
             <ProtectedRoute loggedIn={loggedIn}>
-                <Header setLoggedIn={setLoggedIn} email={email} link={'/sign-in'} text={'Выйти'} />
+                <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} email={email} link={'/sign-in'} text={'Выйти'} />
                 <Main
                   onEditAvatar={handleEditAvatarClick}
                   onEditProfile={handleEditProfileClick}

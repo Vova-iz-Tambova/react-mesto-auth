@@ -50,7 +50,7 @@ function Register() {
             placeholder="Пароль"
             onChange={handlePassword}
           />
-          <button className="auth__submit" type="submit">Зарегестрироваться</button>
+          <button className="auth__submit" type="submit">Зарегистрироваться</button>
         </form>
         <p>Уже зарегестрированы? <Link className="link-effect" to="/sign-in">Войти</Link></p>
       </div>

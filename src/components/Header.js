@@ -10,11 +10,13 @@ function Header(props) {
 
   return (
       <header className="header">
+        <div className={`${props.loggedIn && "header__nav"}`}>
         <img className="header__logo" src={logo} alt="логотип" />
-        <div className="header__container">
+        </div>
+        <div className={"header__menu"}>
           <div>
             <Link to={props.link} onClick={onSignOut}
-              className="header__link  link-effect">
+              className={`${props.loggedIn && "header__link"} link-effect`}>
               {props.text}
             </Link>
           </div>
